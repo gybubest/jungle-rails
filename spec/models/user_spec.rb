@@ -21,11 +21,9 @@ RSpec.describe User, type: :model do
       puts user1.errors.full_messages
       assert_equal(["Password can't be blank"], user1.errors.full_messages)
 
-      # user2 = User.create(name: "Test Name", email: "test2@test.com", password: "test_password", password_confirmation: "password")
-      # puts user2.inspect
-      # expect(user2.password).not_to eq(user2.password_confirmation)
-      # puts user2.errors.full_messages
-      # assert_equal(["Password confirmation doesn't match Password"], user2.errors.full_messages)
+      user2 = User.create(name: "Test Name", email: "test2@test.com", password: "test_password", password_confirmation: "password")
+      puts user2.errors.full_messages
+      assert_equal(["Password confirmation doesn't match Password"], user2.errors.full_messages)
     end
 
   end
