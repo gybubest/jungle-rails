@@ -13,7 +13,6 @@ RSpec.describe Product, type: :model do
       product = Product.create(name: nil, quantity: 10, price: 1000, category: cat)
       expect(product.name).to be_nil
 
-      puts product.errors.full_messages
       assert_equal(["Name can't be blank"], product.errors.full_messages)
     end
 
@@ -22,7 +21,6 @@ RSpec.describe Product, type: :model do
       product = Product.create(name: 'Women\'s Classy dress', quantity: nil, price: 1000, category: cat)
       expect(product.quantity).to be_nil
 
-      puts product.errors.full_messages
       assert_equal(["Quantity can't be blank"], product.errors.full_messages)
     end
 
@@ -31,7 +29,6 @@ RSpec.describe Product, type: :model do
       product = Product.create(name: 'Women\'s Classy dress', quantity: 10, price: nil, category: cat)
       expect(product.price).to be_nil
 
-      puts product.errors.full_messages
       assert_equal(["Price cents is not a number", "Price is not a number", "Price can't be blank"], product.errors.full_messages)
     end
 
@@ -40,7 +37,6 @@ RSpec.describe Product, type: :model do
       product = Product.create(name: 'Women\'s Classy dress', quantity: 10, price: 1000, category: nil)
       expect(product.category).to be_nil
 
-      puts product.errors.full_messages
       assert_equal(["Category can't be blank"], product.errors.full_messages)
     end
 
