@@ -26,5 +26,13 @@ RSpec.describe User, type: :model do
       assert_equal(["Password confirmation doesn't match Password"], user2.errors.full_messages)
     end
 
+    it 'should validate that the email is unique, not case sensitive' do
+      user1 = User.create(name: "Test Name", email: "test3@test.COM", password: "test_password", password_confirmation: "test_password")
+
+      user2 = User.create(name: "Test Name", email: "TEST3@TEST.com", password: "test_password", password_confirmation: "test_password")
+      puts user2.errors.full_messages
+      assert_equal(["Email has already been taken"], user2.errors.full_messages)
+    end
+
   end
 end
