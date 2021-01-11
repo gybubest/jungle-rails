@@ -34,5 +34,15 @@ RSpec.describe User, type: :model do
       assert_equal(["Email has already been taken"], user2.errors.full_messages)
     end
 
+    it 'should validate the presence of mail and name' do
+      user1 = User.create(name: nil, email: "test3@test.COM", password: "test_password", password_confirmation: "test_password")
+      puts user1.errors.full_messages
+      assert_equal(["Name can't be blank"], user1.errors.full_messages)
+
+      user2 = User.create(name: "Test Name", email: nil, password: "test_password", password_confirmation: "test_password")
+      puts user2.errors.full_messages
+      assert_equal(["Email can't be blank"], user2.errors.full_messages)
+    end
+
   end
 end
