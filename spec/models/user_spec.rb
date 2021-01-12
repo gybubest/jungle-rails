@@ -35,13 +35,32 @@ RSpec.describe User, type: :model do
       assert_equal(["Password is too short (minimum is 5 characters)"], user1.errors.full_messages)
 
       user2 = User.create(name: "Test Name", email: "test1@test.com", password: "test_password", password_confirmation: "test_password")
-      puts user2.inspect
       expect(user2.id).not_to be_nil
     end
 
   end
 
   describe '.authenticate_with_credentials' do
-    # examples for this class method here
+    it 'should return user instance with correct credentials' do
+      user = User.create(name: "Test Name", email: "test2@test.com", password: "test_password", password_confirmation: "test_password")
+      result = User.authenticate_with_credentials(user.email, user.password)
+      expect(result).not_to be_nil
+    end
+
+    it 'should return nil with wrong credentials' do
+      user = User.create(name: "Test Name", email: "test1@test.com", password: "test_password", password_confirmation: "test_password")
+      result = User.authenticate_with_credentials(user.email, "123456")
+      expect(result).to be_nil
+
+      user2 = User.create(name: "Test Name", email: "test2@test.com", password: "test_password", password_confirmation: "test_password")
+      result2 = User.authenticate_with_credentials("wrong@mail.com", user2.password)
+      expect(result2).to be_nil
+
+      user3 = User.create(name: "Test Name", email: "test3@test.com", password: "test_password", password_confirmation: "test_password")
+      result3 = User.authenticate_with_credentials("wrong@mail.com", "123456")
+      expect(result3).to be_nil
+
+    end
+
   end
 end
