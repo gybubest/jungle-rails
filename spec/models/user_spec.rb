@@ -62,5 +62,13 @@ RSpec.describe User, type: :model do
 
     end
 
+    it 'should return user instance even if there\'re spaces before and/or after the email' do
+      user = User.create(name: "Test Name", email: "test3@test.com", password: "test_password", password_confirmation: "test_password")
+      result = User.authenticate_with_credentials("  #{user.email}  ", user.password)
+      puts result3.inspect
+      expect(result).not_to be_nil
+
+    end
+
   end
 end
