@@ -12,13 +12,13 @@ Features:
 ## Final Product
 
 - Home Page
-!["Home Page"]()
+!["Home Page"](https://github.com/gybubest/jungle-rails/blob/master/docs/Home_Page.png?raw=true)
 
 - Cart
-!["Cart"]()
+!["Cart"](https://github.com/gybubest/jungle-rails/blob/master/docs/Cart.png?raw=true)
 
 - Add new category
-!["Add new category"]()
+!["Add new category"](https://github.com/gybubest/jungle-rails/blob/master/docs/Add_new_category.png?raw=true)
 
 ## Setup
 
